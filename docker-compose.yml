@@ -1,0 +1,13 @@
+services:
+  app:
+    image: app-jenkins-test/dev:${TAG:-latest}
+    build:
+      context: .
+      target: production
+    restart: unless-stopped
+    ports:
+      - '${PORT}:${PORT}'
+    environment:
+      PORT: ${PORT}
+    mem_limit: 2g # Set max memory to 2 GB
+    cpus: 2 # Set max CPU to 2 CPU core
