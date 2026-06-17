@@ -14,4 +14,18 @@ export class AppController {
   ping() {
     return this.appService.ping();
   }
+
+  @Get('/healthz/details')
+  getHealthDetails() {
+    return this.appService.getHealthDetails();
+  }
+
+  @Get('/version')
+  getVersion() {
+    return {
+      app: 'app-jenkins-test',
+      build: process.env.BUILD_ID || 'local',
+      commit: process.env.GIT_COMMIT || 'unknown',
+    };
+  }
 }

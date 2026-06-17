@@ -13,4 +13,16 @@ export class AppService {
       timestamp: Date.now(),
     };
   }
+
+  getHealthDetails() {
+    return {
+      status: 'ok',
+      service: 'app-jenkins-test',
+      uptime: process.uptime(),
+      memory: process.memoryUsage(),
+      nodeVersion: process.version,
+      platform: process.platform,
+      timestamp: new Date().toISOString(),
+    };
+  }
 }
